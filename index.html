@@ -55,6 +55,13 @@
       background: #27ae60;
     }
 
+    .mensaje {
+      margin-top: 20px;
+      color: #2ecc71;
+      font-weight: bold;
+      display: none;
+    }
+
     footer {
       margin-top: 40px;
       font-size: 14px;
@@ -66,14 +73,29 @@
   <h1>Registro de Asistencia</h1>
   <p>Por favor ingresa tus datos. La información será enviada al profesor.</p>
 
-  <form>
+  <form id="formAsistencia">
     <input type="text" placeholder="Nombre completo" required><br>
     <input type="text" placeholder="Matrícula o ID" required><br>
     <button type="submit">Registrar</button>
   </form>
 
+  <div class="mensaje" id="mensajeExito">
+    ✅ ¡La información se envió correctamente!
+  </div>
+
   <footer>
     &copy; 2026 AsistenciaQR
   </footer>
+
+  <script>
+    const form = document.getElementById("formAsistencia");
+    const mensaje = document.getElementById("mensajeExito");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // evita que recargue la página
+      mensaje.style.display = "block"; // muestra el mensaje
+      form.reset(); // limpia los campos
+    });
+  </script>
 </body>
 </html>
